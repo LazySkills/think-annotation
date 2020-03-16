@@ -22,6 +22,9 @@ use think\event\RouteLoaded;
  */
 trait InteractsWithRoute
 {
+
+    use InteractsWithCustom;
+
     /**
      * @var \think\Route
      */
@@ -91,6 +94,8 @@ trait InteractsWithRoute
                 $routeGroup = $this->route->getGroup();
             }
 
+            $this->registerCustomClassAnnotations($refClass,$routeGroup);
+
             //方法
             foreach ($refClass->getMethods(\ReflectionMethod::IS_PUBLIC) as $refMethod) {
 
@@ -124,6 +129,8 @@ trait InteractsWithRoute
                     if ($validate = $this->reader->getMethodAnnotation($refMethod, Validate::class)) {
                         $rule->validate($validate->value, $validate->scene, $validate->message, $validate->batch);
                     }
+
+                    $this->registerCustomMethodAnnotations($refMethod,$rule);
                 }
             }
         }

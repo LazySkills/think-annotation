@@ -1,0 +1,20 @@
+<?php
+declare (strict_types = 1);
+
+namespace {%namespace%};
+
+use Doctrine\Common\Annotations\Annotation;
+use think\annotation\handler\Handler;
+
+final class {%className%} extends Handler
+{
+    public function cls(\ReflectionClass $refClass, Annotation $annotation, \think\Route\RuleGroup &$route)
+    {
+        // TODO: 完成类注解的操作
+    }
+
+    public function func(\ReflectionMethod $refMethod, Annotation $annotation, \think\route\RuleItem &$rule)
+    {
+        // TODO: 完成方法注解的操作
+    }
+}
