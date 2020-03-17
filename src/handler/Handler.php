@@ -9,6 +9,16 @@ use Doctrine\Common\Annotations\Annotation;
 abstract class Handler implements HandleInterface
 {
 
+    public function cls(\ReflectionClass $refClass, Annotation $annotation, \think\Route\RuleGroup &$route)
+    {
+        // TODO: Implement cls() method.
+    }
+
+    public function func(\ReflectionMethod $refMethod, Annotation $annotation, \think\route\RuleItem &$rule)
+    {
+        // TODO: Implement func() method.
+    }
+
     /**
      * 判断是否是当前请求
      * @param \ReflectionMethod $refMethod
