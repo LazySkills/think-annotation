@@ -8,16 +8,13 @@ use Doctrine\Common\Annotations\Annotation;
 
 abstract class Handler implements HandleInterface
 {
-    public function cls(\ReflectionClass $refClass, Annotation $annotation, \think\Route &$route)
-    {
-        // TODO: Implement cls() method.
-    }
 
-    public function func(\ReflectionMethod $refMethod, Annotation $annotation, \think\route\RuleItem &$rule)
-    {
-        // TODO: Implement func() method.
-    }
-
+    /**
+     * 判断是否是当前请求
+     * @param \ReflectionMethod $refMethod
+     * @param \think\route\RuleItem $rule
+     * @return bool
+     */
     public function isCurrentMethod(\ReflectionMethod $refMethod,\think\route\RuleItem $rule){
         if (strtolower(PHP_SAPI) != 'cli'){
             if (strtolower(request()->method()) !== strtolower($rule->getMethod())) return false;

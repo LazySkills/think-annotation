@@ -134,7 +134,7 @@ class IndexController
   
   class User extends Handler
   {
-      public function cls(\ReflectionClass $refClass, Annotation $annotation, \think\Route &$route)
+      public function cls(\ReflectionClass $refClass, Annotation $annotation, \think\Route\RuleGroup &$route)
       {
           // TODO: 完成类注解的操作
       }
@@ -154,7 +154,7 @@ class IndexController
   |  ----  | ----  |
   | $refClass  | `\ReflectionClass` 当前注解类的反射对象 |
   | $annotation  | 当前类注解的参数对象（`cls和func的annotation一样`） |
-  | $route  | 当前类的`TP6` `\think\Route`路由对象 |
+  | $route  | 当前类的`TP6` `\think\Route\RuleGroup`路由对象 |
   | $refMethod  | `\ReflectionMethod` 当前注解类访问方法的反射对象 |
   | $rule  | 当前方法的`TP6` `\think\route\RuleItem` 路由规则对象 |
 
@@ -179,9 +179,12 @@ class IndexController
        'ignore' => [],
        'management' => true,
        'custom' => [
-           # 格式：注解类 => 注解操作类
-           \app\annotation\User::class => \app\annotation\handler\User::class, # 这里写上你的注解
-       ]
+          'enable'      => true,
+          # 格式：注解类 => 注解操作类
+          'namespaces' => [
+              \app\annotation\User::class => \app\annotation\handler\User::class, # 这里写上你的注解
+          ],
+       ],
    ];
   ```
    

@@ -1,6 +1,6 @@
 <?php
 
-namespace think\annotation\route;
+namespace think\annotation;
 
 use Doctrine\Common\Annotations\Annotation;
 use Doctrine\Common\Annotations\Annotation\Enum;
